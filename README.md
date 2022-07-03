@@ -1,8 +1,6 @@
 # dockerfile
 
-php8.0 + php8.0-fpm + nginx
-
-ref: https://github.com/johnathanesanders/docker-nginx-fpm
+php8.0 + php8.0-fpm + nginx + composer
 
 folder structor for config nginx, php, php fpm. nginx listen in port 80, root dir /usr/share/nginx/html/public;
 
@@ -91,3 +89,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# ref docker file
+
+
+ref: https://github.com/johnathanesanders/docker-nginx-fpm
