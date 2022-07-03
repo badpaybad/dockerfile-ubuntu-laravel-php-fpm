@@ -1,4 +1,3 @@
-#https://github.com/johnathanesanders/docker-nginx-fpm
 FROM ubuntu:20.04
 
 # Download script to install PHP extensions and dependencies if use FROM php:8.0-fpm
@@ -6,13 +5,17 @@ FROM ubuntu:20.04
 # RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 # RUN install-php-extensions dom curl 7zip unzip
 
-RUN apt update && apt -y upgrade &&\
-    apt install -y lsb-release ca-certificates apt-transport-https software-properties-common curl && add-apt-repository ppa:ondrej/php
-RUN apt install -y bash nginx php8.0 php8.0-fpm php8.0-opcache php8.0-gd \
+RUN apt update && apt -y upgrade && apt install -y lsb-release ca-certificates apt-transport-https software-properties-common
+
+RUN apt install -y bash nginx zip unzip htop nano imagemagick curl 
+#php8.0
+RUN add-apt-repository ppa:ondrej/php && apt install -y php8.0
+#php8 extension
+RUN apt install -y php8.0-fpm php8.0-opcache php8.0-gd \
     php8.0-curl php8.0-xml php8.0-mbstring php8.0-zip \
     php8.0-cli php8.0-common php8.0-imap php8.0-redis php8.0-snmp \
     php8.0-mysql php8.0-pgsql php8.0-mongodb \
-    zip unzip htop nano
+    php8.0-imagick     
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
