@@ -46,6 +46,7 @@ RUN useradd -r -s /sbin/nologin -d /dev/null -g nginx nginx
 
 RUN chmod 777 /usr/share/nginx/html/
 RUN chmod -R 777 /usr/share/nginx/html/storage
-RUN chmod -R 775 /usr/share/nginx/html/public/shared
+RUN chown -R www:www /usr/share/nginx/html/public/
+RUN chmod -R 775 /usr/share/nginx/html/public/
 
 CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
