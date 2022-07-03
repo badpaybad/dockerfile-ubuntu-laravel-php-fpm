@@ -1,3 +1,32 @@
+# dockerfile
+
+php8.0 + php8.0-fpm + nginx
+
+ref: https://github.com/johnathanesanders/docker-nginx-fpm
+
+folder structor for config nginx, php, php fpm. nginx listen in port 80, root dir /usr/share/nginx/html/public;
+
+                /server
+                |--nginx
+                |--php
+
+You can volume mount some log folder in need. Build and run docker, you need cmd in current folder with dockerfile (the folder of this git)
+
+                docker build -t testlaravel .
+                
+
+### your source code
+            
+                ##your source
+                COPY ./ /usr/share/nginx/html/
+
+### /server/php/php.ini
+
+Your need install you own php extensions, and modify php.ini. Docker file should RUN apt ...your php ext...
+
+
+## laravel
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

@@ -16,6 +16,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 COPY server/etc/nginx /etc/nginx
 COPY server/etc/php /etc/php8
+
 ##your source
 COPY ./ /usr/share/nginx/html/
 
