@@ -13,7 +13,8 @@ RUN add-apt-repository ppa:ondrej/php && apt install -y php8.0
 #php8 extension
 RUN apt install -y php8.0-fpm php8.0-opcache php8.0-gd \
     php8.0-curl php8.0-xml php8.0-mbstring php8.0-zip \
-    php8.0-cli php8.0-common php8.0-imap php8.0-redis php8.0-snmp \
+    php8.0-cli php8.0-common php8.0-redis \
+    php8.0-imap php8.0-snmp php8.0-soap \
     php8.0-mysql php8.0-pgsql php8.0-mongodb \
     php8.0-imagick     
 
