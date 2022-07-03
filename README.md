@@ -17,7 +17,7 @@ You should copy folder : server and file Dockerfile to you Laravel project
 You can volume mount some log folder in need. Build and run docker, you need cmd in current folder with dockerfile (the folder of this git)
 
                 docker build -t testlaravel .
-                
+                docker run -d -p 8889:80 testlaravel 
 
 # Inside docker
 
