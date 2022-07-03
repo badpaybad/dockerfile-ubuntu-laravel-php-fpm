@@ -108,4 +108,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # ref docker file
 
 
-ref: https://github.com/johnathanesanders/docker-nginx-fpm
+ref nginx : https://github.com/johnathanesanders/docker-nginx-fpm
+
+php8.0 https://bobcares.com/blog/install-php-8-on-ubuntu-20-04/
