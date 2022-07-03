@@ -19,6 +19,16 @@ You can volume mount some log folder in need. Build and run docker, you need cmd
                 docker build -t testlaravel .
                 
 
+# Inside docker
+
+Config will map to 
+
+               /etc/nginx/nginx.conf
+               /etc/nginx/conf.d/default.conf
+               /etc/php/8.0/fpm/php-fpm.conf
+               /etc/php8/php.ini
+
+
 ### Your source code
             
                 ##your source
@@ -27,7 +37,6 @@ You can volume mount some log folder in need. Build and run docker, you need cmd
 ### /server/php/php.ini
 
 Your need install you own php extensions, and modify php.ini. Docker file should RUN apt ...your php ext...
-
 
 ## Laravel
 
