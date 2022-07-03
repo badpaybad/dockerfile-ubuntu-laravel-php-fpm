@@ -50,3 +50,6 @@ RUN chown -R www:www /usr/share/nginx/html/public/
 RUN chmod -R 775 /usr/share/nginx/html/public/
 
 CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
+
+# docker build -t testlaravel .
+# docker run -d -p 8889:80 testlaravel 
