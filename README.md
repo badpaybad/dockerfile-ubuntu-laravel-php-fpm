@@ -19,6 +19,9 @@ You can volume mount some log folder in need. Build and run docker, you need cmd
                 docker build -t testlaravel .
                 docker run -d -p 8889:80 testlaravel 
 
+Should add your own .env 
+
+                COPY ./.env.example /usr/share/nginx/html/.env
 # Inside docker
 
 Config will map to 

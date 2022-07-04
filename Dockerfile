@@ -28,6 +28,8 @@ COPY server/etc/php /etc/php8
 ##your source
 COPY ./ /usr/share/nginx/html/
 
+# COPY ./.env.example /usr/share/nginx/html/.env
+
 WORKDIR /usr/share/nginx/html/
 ENV COMPOSER_ALLOW_SUPERUSER 1
 #RUN composer install
@@ -46,8 +48,8 @@ RUN useradd -r -s /sbin/nologin -d /dev/null -g nginx nginx
 
 RUN chmod 777 /usr/share/nginx/html/
 RUN chmod -R 777 /usr/share/nginx/html/storage
-RUN chown -R www:www /usr/share/nginx/html/public/
-RUN chmod -R 775 /usr/share/nginx/html/public/
+#RUN chown -R www:www /usr/share/nginx/html/public/
+RUN chmod -R 777 /usr/share/nginx/html/public/
 
 CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
 
