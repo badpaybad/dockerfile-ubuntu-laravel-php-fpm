@@ -23,7 +23,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt clean -y
 
 COPY server/etc/nginx /etc/nginx
+
 COPY server/etc/php /etc/php8
+
+COPY server/etc/php/8.0/cli/php.ini /etc/php/8.0/cli/php.ini
+COPY server/etc/php/8.0/fpm/php.ini /etc/php/8.0/fpm/php.ini
+COPY server/etc/php/8.0/fpm/php-fpm.conf /etc/php/8.0/fpm/php-fpm.conf
 
 ##your source
 COPY ./ /usr/share/nginx/html/

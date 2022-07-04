@@ -43,6 +43,28 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        
+        'mysqlDockerDefault' => [
+            'driver' => 'mysql',
+            'url' => env('Test_DATABASE_URL'),
+            'host' => env('Test_DB_HOST', '127.0.0.1'),
+            'port' => env('Test_DB_PORT', '3306'),
+            'database' => env('Test_DB_DATABASE', 'forge'),
+            'username' => env('Test_DB_USERNAME', 'forge'),
+            'password' => env('Test_DB_PASSWORD', ''),
+            'unix_socket' => env('Test_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),

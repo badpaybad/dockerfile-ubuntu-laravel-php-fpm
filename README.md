@@ -11,8 +11,15 @@ You should copy folder : server and file Dockerfile to you Laravel project
                 /Dockerfile 
                 /server
                 |--/etc
-                   |--nginx
-                   |--php
+                   |--/nginx
+                   |--/php
+                      |--/8.0
+                         |--php.ini
+
+               
+               COPY server/etc/php/cli-php.ini /etc/php/8.0/cli/php.ini
+               COPY server/etc/nginx /etc/nginx
+                   
 
 You can volume mount some log folder in need. Build and run docker, you need cmd in current folder with dockerfile (the folder of this git)
 
@@ -24,12 +31,21 @@ Should add your own .env
                 COPY ./.env.example /usr/share/nginx/html/.env
 # Inside docker
 
+Can do copy from docker to outside to check
+
+               docker cp 7c78e42ab9ad:/etc/php/8.0/cli/php.ini d:/cli-php.ini
+
+               docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php-fpm.conf d:/php-fpm.conf
+
+               docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php.ini d:/fpm-php.ini
+
 Config will map to 
 
                /etc/nginx/nginx.conf
                /etc/nginx/conf.d/default.conf
                /etc/php/8.0/fpm/php-fpm.conf
-               /etc/php8/php.ini
+               /etc/php/8.0/fpm/php.ini
+               /etc/php/8.0/cli/php.ini
 
 
 ### Your source code
