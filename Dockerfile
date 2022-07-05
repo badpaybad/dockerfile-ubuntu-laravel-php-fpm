@@ -45,16 +45,16 @@ EXPOSE 80
 #EXPOSE 443
 
 STOPSIGNAL SIGTERM
-RUN groupadd -r www
-RUN useradd -r -s /sbin/nologin -d /dev/null -g www www
-
-RUN groupadd -r nginx
-RUN useradd -r -s /sbin/nologin -d /dev/null -g nginx nginx
+#RUN groupadd -r www
+#RUN useradd -r -s /sbin/nologin -d /dev/null -g www www
+#server\etc\nginx\nginx.conf we run as root
+#RUN groupadd -r nginx
+#RUN useradd -r -s /sbin/nologin -d /dev/null -g nginx nginx
 
 RUN chmod 777 /usr/share/nginx/html/
 RUN chmod -R 777 /usr/share/nginx/html/storage
-#RUN chown -R www:www /usr/share/nginx/html/public/
-RUN chmod -R 777 /usr/share/nginx/html/public/
+RUN chown -R www-data:www-data /usr/share/nginx/html/public/
+RUN chmod -R 775 /usr/share/nginx/html/public/
 
 CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
 
