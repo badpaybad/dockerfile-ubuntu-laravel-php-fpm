@@ -7,10 +7,7 @@ function isLeapYear(int $y): bool
 
 function dayByMonthExplicit(int $m, bool $yIsLeap): int
 {
-    if ($m == 2)
-        return $yIsLeap ? 29 : 28;
-
-    return ($m == 4 || $m == 6 || $m == 9 || $m == 11) ? 30 : 31;
+    return ($m == 2)? ( $yIsLeap ? 29 : 28) : (($m == 4 || $m == 6 || $m == 9 || $m == 11) ? 30 : 31) ;
 }
 
 function yearToDays($y)
@@ -53,7 +50,7 @@ function dayOfWeek(int $y, int $m, int $d): int
 {
     //
     $yearTodays= yearToDaysFormular($y);
-    
+
     ////$totalDayByYear= yearToDays($y);
     ////echo "\r\nyou should choose formular: " . $yearTodays . " or use for loop to sum:" . $totalDayByYear . "\r\n";
 
