@@ -39,22 +39,27 @@ function yearToDaysFormular($y)
     return $yearTodays;
 }
 
-function dayOfWeek(int $y, int $m, int $d): int
-{
-
-    $yearTodays= yearToDaysFormular($y);
-    $totalDayByYear= yearToDays($y);
-
-    echo "\r\nyou should choose formular: " . $yearTodays . " or use for loop to sum:" . $totalDayByYear . "\r\n";
-
-    $y_isleap = isLeapYear($y);
+function monthToDays($m,$y_isleap){
     $totalDayByMonth = 0;
     $mBefore = $m - 1;
     for ($i = 0; $i < $mBefore; $i++) {
         $dim = dayByMonthExplicit($i + 1, $y_isleap);        
         $totalDayByMonth = $totalDayByMonth + $dim;
     }
+    return $totalDayByMonth;
+}
 
+function dayOfWeek(int $y, int $m, int $d): int
+{
+    //
+    $yearTodays= yearToDaysFormular($y);
+    
+    ////$totalDayByYear= yearToDays($y);
+    ////echo "\r\nyou should choose formular: " . $yearTodays . " or use for loop to sum:" . $totalDayByYear . "\r\n";
+
+    $y_isleap = isLeapYear($y);
+    
+    $totalDayByMonth= monthToDays($m,$y_isleap);
     $total = $yearTodays + $totalDayByMonth + $d;
 
     return $total % 7;
