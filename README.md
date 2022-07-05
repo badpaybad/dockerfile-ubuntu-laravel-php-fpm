@@ -32,12 +32,16 @@ Should add your own .env
 # Inside docker
 
 Can do copy from docker to outside to check
+                
+                docker cp {container id}:{path inside container} {path your PC}
 
-               docker cp 7c78e42ab9ad:/etc/php/8.0/cli/php.ini d:/cli-php.ini
+                docker cp 7c78e42ab9ad:/etc/php/8.0/cli/php.ini d:/cli-php.ini
 
-               docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php-fpm.conf d:/php-fpm.conf
+                docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php-fpm.conf d:/php-fpm.conf
 
-               docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php.ini d:/fpm-php.ini
+                docker cp 7c78e42ab9ad:/etc/php/8.0/fpm/php.ini d:/fpm-php.ini
+
+                docker cp 77aa911d2a3d:/etc/php/8.0/fpm/pool.d/www.conf d:/www.conf
 
 Config will map to 
 

@@ -29,6 +29,7 @@ COPY server/etc/php /etc/php8
 COPY server/etc/php/8.0/cli/php.ini /etc/php/8.0/cli/php.ini
 COPY server/etc/php/8.0/fpm/php.ini /etc/php/8.0/fpm/php.ini
 COPY server/etc/php/8.0/fpm/php-fpm.conf /etc/php/8.0/fpm/php-fpm.conf
+COPY server/etc/php/8.0/fpm/pool.d/www.conf /etc/php/8.0/fpm/pool.d/www.conf
 
 ##your source
 COPY ./ /usr/share/nginx/html/
@@ -45,8 +46,9 @@ EXPOSE 80
 #EXPOSE 443
 
 STOPSIGNAL SIGTERM
-#RUN groupadd -r www
-#RUN useradd -r -s /sbin/nologin -d /dev/null -g www www
+## check user run fpm : server/etc/php/8.0/fpm/pool.d/www.conf
+# RUN groupadd -r www-data
+# RUN useradd -r -s /sbin/nologin -d /dev/null -g www-data www-data
 #server\etc\nginx\nginx.conf we run as root
 #RUN groupadd -r nginx
 #RUN useradd -r -s /sbin/nologin -d /dev/null -g nginx nginx
