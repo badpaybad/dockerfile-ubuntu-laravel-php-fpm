@@ -31,7 +31,7 @@ function yearToDaysFormular($y)
     $yBefore = $y - 1;
     $century = (int) ($yBefore / 100);
     $yearTodays = $yBefore * 365 + ((int)($yBefore / 4)) - $century + (int) ($century / 4);
-    // 1 năm 365 ngày, 4 năm nhuận 1 lần, 100 năm thì bớt ngày nhuận, 400 năm cộng thêm 1 ngày nhuận
+    // 1 năm 365 ngày, cứ 4 năm nhuận 1 lần, cứ 100 năm thì bớt ngày nhuận, cứ 400 năm cộng thêm 1 ngày nhuận
 
     return $yearTodays;
 }
