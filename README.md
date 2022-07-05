@@ -50,6 +50,7 @@ Config will map to
                /etc/php/8.0/fpm/php-fpm.conf
                /etc/php/8.0/fpm/php.ini
                /etc/php/8.0/cli/php.ini
+               /etc/php/8.0/fpm/pool.d/www.conf
 
 
 ### Your source code
