@@ -7,10 +7,7 @@ function isLeapYear(int $y): bool
 
 function dayByMonthExplicit(int $m, bool $yIsLeap): int
 {
-    if ($m == 2)
-        return $yIsLeap ? 29 : 28;
-
-    return ($m == 4 || $m == 6 || $m == 9 || $m == 11) ? 30 : 31;
+    return ($m == 2)? ( $yIsLeap ? 29 : 28) : (($m == 4 || $m == 6 || $m == 9 || $m == 11) ? 30 : 31) ;
 }
 
 function yearToDays($y)
@@ -34,27 +31,32 @@ function yearToDaysFormular($y)
     $yBefore = $y - 1;
     $century = (int) ($yBefore / 100);
     $yearTodays = $yBefore * 365 + ((int)($yBefore / 4)) - $century + (int) ($century / 4);
-    // 1 năm 365 ngày, thêm 4 năm nhuận 1 lần, 100 năm thì bớt ngày nhuận, 400 năm cộng thêm 1 ngày nhuận
+    // 1 năm 365 ngày, cứ 4 năm nhuận 1 lần, cứ 100 năm thì bớt ngày nhuận, cứ 400 năm cộng thêm 1 ngày nhuận
 
     return $yearTodays;
 }
 
-function dayOfWeek(int $y, int $m, int $d): int
-{
-
-    $yearTodays= yearToDaysFormular($y);
-    $totalDayByYear= yearToDays($y);
-
-    echo "\r\nyou should choose formular: " . $yearTodays . " or use for loop to sum:" . $totalDayByYear . "\r\n";
-
-    $y_isleap = isLeapYear($y);
+function monthToDays($m,$y_isleap){
     $totalDayByMonth = 0;
     $mBefore = $m - 1;
     for ($i = 0; $i < $mBefore; $i++) {
         $dim = dayByMonthExplicit($i + 1, $y_isleap);        
         $totalDayByMonth = $totalDayByMonth + $dim;
     }
+    return $totalDayByMonth;
+}
 
+function dayOfWeek(int $y, int $m, int $d): int
+{
+    //
+    $yearTodays= yearToDaysFormular($y);
+
+    ////$totalDayByYear= yearToDays($y);
+    ////echo "\r\nyou should choose formular: " . $yearTodays . " or use for loop to sum:" . $totalDayByYear . "\r\n";
+
+    $y_isleap = isLeapYear($y);
+    
+    $totalDayByMonth= monthToDays($m,$y_isleap);
     $total = $yearTodays + $totalDayByMonth + $d;
 
     return $total % 7;
