@@ -52,6 +52,25 @@ Config will map to
                /etc/php/8.0/cli/php.ini
                /etc/php/8.0/fpm/pool.d/www.conf
 
+### should care about
+                
+server/etc/php/8.0/fpm/pool.d/www.conf
+                
+                listen = /run/php/php8.0-fpm.sock                                
+
+server/etc/php/8.0/fpm/php-fpm.conf
+
+                pid = /run/php/php8.0-fpm.pid                
+                include=/etc/php/8.0/fpm/pool.d/*.conf
+                
+server/etc/nginx/conf.d/default.conf
+                               
+                root /usr/share/nginx/html/public;          
+
+Dockerfile
+
+                CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
+                COPY ./ /usr/share/nginx/html/
 
 ### Your source code
             
