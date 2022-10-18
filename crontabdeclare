@@ -1,0 +1,1 @@
+* * * * * cd /usr/share/nginx/html && php crontabtest.php >> /var/log/cron.log 2>&1

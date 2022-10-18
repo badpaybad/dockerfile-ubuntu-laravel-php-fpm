@@ -18,6 +18,19 @@ RUN apt install -y php8.0-fpm php8.0-opcache php8.0-gd \
     php8.0-mysql php8.0-pgsql php8.0-mongodb \
     php8.0-imagick     
 
+RUN apt install cron -y 
+COPY crontabdeclare /etc/cron.d/crontab
+## content of crontabdeclare eg: cd WORKDIR
+#* * * * * cd /usr/share/nginx/html && php artisan schedule:run >> /var/log/cron.log 2>&1
+#* * * * * cd /usr/share/nginx/html && php artisan schedule:run >> /dev/null 2>&1
+# An empty line is required at the end of this file for a valid cron file. should point dev null, you code should try catch to get exceptison
+
+RUN chmod 0644 /etc/cron.d/crontab
+RUN crontab /etc/cron.d/crontab
+RUN touch /var/log/cron.log
+# Run the command on container startup -> should mount to host or comment no use
+
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apt clean -y
@@ -62,7 +75,7 @@ RUN chmod -R 775 /usr/share/nginx/html/storage/
 RUN chown -R www-data:www-data /usr/share/nginx/html/public/
 RUN chmod -R 775 /usr/share/nginx/html/public/
 
-CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock && nginx -g 'daemon off;'"]
+CMD ["/bin/bash", "-c", "php-fpm8.0 && chmod 777 /var/run/php/php8.0-fpm.sock  && cron && nginx -g 'daemon off;'"]
 
 # docker build -t testlaravel .
 # docker run -d -p 8889:80 testlaravel 
